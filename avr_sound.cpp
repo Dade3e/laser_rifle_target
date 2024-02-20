@@ -30,7 +30,8 @@ void avr_sound_play_buffer(size_t n) {
 }
 
 // to have 8000 Hz we need to play for 125 millis
-#define avr_sound_interval 125
+#define avr_sound_interval 125 *8 //ATTINY
+//#define avr_sound_interval 125
 
 inline void avr_sound_out(unsigned char v) {
   PORTB^= (PORTB&3)^v;

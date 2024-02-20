@@ -1,5 +1,17 @@
+// ATMEL ATTINY 25/45/85 / ARDUINO
+//
+//                  +-\/-+
+// Ain0 (D 5) PB5  1|    |8  Vcc
+// Ain3 (D 3) PB3  2|    |7  PB2 (D 2) Ain1
+// Ain2 (D 4) PB4  3|    |6  PB1 (D 1) pwm1
+//            GND  4|    |5  PB0 (D 0) pwm0   -> speaker
+//                  +----+
+
+
 #include "avr_sound.h"
 #include "Quack_Sound_Effect.h"
+
+#define AnalogPin 3
 
 #define buffer_size 32
 #define debug false
@@ -14,7 +26,7 @@ long j = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(A0,INPUT);
+  pinMode(AnalogPin,INPUT);
   if(info || debug)
     Serial.begin(115200);
 
@@ -22,7 +34,7 @@ void setup() {
 
   //first setup photoresistor
   for(int i = 0; i< buffer_size; i++){
-    int val = analogRead(A0);
+    int val = analogRead(AnalogPin);
     if(val > max)
       max = val;
     buffer[i] = val;
@@ -37,7 +49,7 @@ void setup() {
 }
 
 void loop() {
-  int val = analogRead(A0);
+  int val = analogRead(AnalogPin);
   if(val > max)
     max = val;
   offset = (max - media) /2;
