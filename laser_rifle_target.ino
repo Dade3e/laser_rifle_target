@@ -27,6 +27,7 @@ long j = 0;
 void setup() {
   // put your setup code here, to run once:
   pinMode(AnalogPin,INPUT);
+  pinMode(0,OUTPUT);
   if(info || debug)
     Serial.begin(115200);
 
@@ -64,15 +65,15 @@ void loop() {
         Serial.print("HIT ");
         Serial.println(j);
       }
-      /*
+      delay(200);
       for (int i=0; i<5; i++){
-        digitalWrite(8, HIGH);
+        digitalWrite(0, HIGH);
         delay(20);
-        digitalWrite(8, LOW);
+        digitalWrite(0, LOW);
         delay(30);
       }
-      */
-      play_Quack_Sound_Effect();
+
+      //play_Quack_Sound_Effect();
     }
     j = 0;
   }
