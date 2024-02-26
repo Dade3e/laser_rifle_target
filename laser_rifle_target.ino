@@ -66,12 +66,12 @@ void loop() {
         Serial.println(j);
       }
       delay(200);
-      for (int i=0; i<5; i++){
-        digitalWrite(0, HIGH);
-        delay(20);
-        digitalWrite(0, LOW);
-        delay(30);
-      }
+      //for (int i=0; i<5; i++){
+      digitalWrite(0, HIGH);
+      delay(50);
+      digitalWrite(0, LOW);
+      //delay(30);
+      //}
 
       //play_Quack_Sound_Effect();
     }
